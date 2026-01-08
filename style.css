@@ -1,0 +1,309 @@
+@font-face {
+    font-family: "GenEi Kiwami Gothic";
+    src: url("fonts/GenEiKiwamiGothic-Ultra.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+:root{
+    --bg: #F5F5F5;
+    --paper: #ffffff;
+    --ink: #1f1a0f;
+    --muted: #555;
+    --line: #d8d2c6;
+    --max: 1200px;
+  }
+  
+  *{ box-sizing: border-box; }
+  html, body { height: 100%; }
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+
+figure{ margin: 0; }
+  
+  .page{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 18px 10px 60px; /* 10px page margin like your reference */
+  }
+  
+  .topbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 2px;
+    border-bottom: 2px;
+    padding: 10px 4px 20px;
+    gap: 12px;
+  }
+  
+  .topbar__left{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+
+    padding-left: 10px ;
+  }
+  
+  .navlink{
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: .02em;
+    font-size: 15px;
+  }
+  
+  .navlink--muted{
+    opacity: .85;
+  }
+  
+  .topbar__email{
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: .02em;
+    font-size: 15px;
+    opacity: .9;
+    white-space: nowrap;
+  }
+  
+  .hero{
+  margin-top: 10px;
+
+  position: relative;
+  
+  background: #eee;
+}
+  
+  .hero__img{
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.05) contrast(1.02);
+}
+.hero::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 150px; /* band height */
+  background: rgba(246, 244, 239, 0.78); /* matches page tone */
+  z-index: 1;
+}
+  
+  .hero__name{
+  position: absolute;
+  left: 50%;
+  top: 20px;               /* sits inside the band */
+  transform: translateX(-50%);
+  z-index: 2;
+
+  font-family: "GenEi Kiwami Gothic",;
+  font-weight: 900;
+
+  font-size: 6.8vw;       /* fills screen like poster */
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+
+  color: #1f1a0f;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  font-kerning: normal;
+  font-feature-settings: "kern";
+
+  -webkit-text-stroke: 0.8px currentColor;
+
+  text-rendering: geometricPrecision;
+}
+  
+  .section{
+    padding: 5px 0 0;
+  }
+  
+  #about{
+  margin-top: -280px; /* overlap onto hero */
+  position: relative;
+  z-index: 3;
+}
+
+#portfolio{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+  
+  .section__title{
+  font-family: "GenEi Kiwami Gothic",;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-size: 3.4vw;
+  
+  
+
+  padding: 10px 10px 0px;
+
+  color: #1f1a0f;
+  background: rgba(246, 244, 239, 0.78);
+  border-bottom: 0;
+}
+  
+  .card{
+  background: rgba(246, 244, 239, 0.78);
+  border: 0;
+  padding: 10px 10px 5px;
+  line-height: 1.5;
+  font-size: 1vw;
+
+  color: #1f1a0f;
+}
+  
+  .bigtitle{
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    font-size: 3.4vw;
+
+    padding: 5px 0 0;
+    
+    
+    text-transform: uppercase;
+  }
+  
+  .subtitle{
+    margin-top: 5px;
+
+    font-weight: 800;
+    letter-spacing: .04em;
+    font-size: 1.6vw;
+
+    opacity: .9;
+    padding-left: 0;
+  }
+  
+  .subtitle--spaced{
+    margin-top: 25px;
+  }
+
+  #portfolio img{
+    margin: 0;          /* no extra offset */
+    display: block;
+  }
+  
+  .portfolio-grid{
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1.5fr .9fr;
+    column-gap: 20px;   /* wider gutter like the reference */
+    row-gap: 100px;
+    justify-items: start;
+  }
+  
+  .shot{
+    background: transparent;
+    margin: 0;
+  }
+  
+  .shot--big img{
+    width: 75%;
+    height: auto;
+    display: block;
+    margin: 0;            /* IMPORTANT */
+  }
+  
+  .shot--text{
+    padding: 0 10px 0 0;    /* keep right breathing room, no left offset */
+  }
+  
+  .shot--text h3{
+    margin: 0 0 25px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .03em;
+  }
+  
+  .shot--text p{
+    margin: 0 0 10px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  
+  .muted{ 
+    color: var(--muted); 
+  }
+  
+  .compare{
+    margin: 14px 0 0;       /* align with text column left edge */
+    width: min(360px, 78%);
+  }
+
+  .compare img{
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;              /* remove any residual offsets */
+  }
+  
+  .gd-grid{
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+    row-gap: 18px;
+    align-items: start;
+  }
+  
+  .gd-item{
+    display: block;
+  }
+  .gd-card{
+    background: transparent;
+    margin: 0;
+  }
+
+  .gd-card img{
+    width: 90%;
+    height: auto;
+    display: block;     /* posters fill the left/right columns */
+  }
+  
+  .gd-text{
+    padding: 12px 0 0;
+  }
+  .gd-text h3{
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .03em;
+  }
+  .gd-text p{
+    margin: 0 25px 10px;
+    font-size: 12px;
+    line-height: 1.65;
+  }
+  
+  .footer{
+    margin-top: 28px;
+    border-top: 2px solid var(--line);
+    padding-top: 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  
+  /* Responsive */
+/* Responsive */
+@media (max-width: 860px){
+  .portfolio-grid{ grid-template-columns: 1fr; }
+  .gd-grid{ grid-template-columns: 1fr; }
+  .hero__name{letter-spacing: -0.025em; font-size: 12vw;}
+  .hero__img{ height: 240px; }
+  .topbar{ flex-direction: column; align-items: flex-start; }
+  .topbar__email{ white-space: normal; }
+  #about{ margin-top: -40px; }
+  .section__title{ font-size: 34px; }
+}
