@@ -183,7 +183,7 @@
         </article>
 
         <figure class="game-media">
-          <video controls playsinline muted>
+            <video id="levelVideo" controls playsinline muted defaultMuted autoplay loop controlsList="nodownload nofullscreen noplaybackrate">
             <source src="assets/level-design-demo.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -199,6 +199,20 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Force the level video to stay muted (some browsers/players can restore audio state)
+    const v = document.getElementById("levelVideo");
+    if (v) {
+      const lockMute = () => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.volume = 0;
+      };
+
+      lockMute();
+      v.addEventListener("play", lockMute);
+      v.addEventListener("volumechange", lockMute);
+    }
   </script>
 </body>
 </html>
