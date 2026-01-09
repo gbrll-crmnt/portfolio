@@ -20,8 +20,21 @@
       <div class="topbar__left">
         <a class="navlink navlink--muted" href="#menu">MENU</a>
         <a class="navlink" href="#about">ABOUT</a>
-        <a class="navlink" href="#portfolio">PORTFOLIO</a>
+      
+
+      <div class="dropdown">
+        <a class="navlink dropdown__toggle" href="#portfolio">
+          PORTFOLIO <span class="dropdown__caret">▾</span>
+        </a>
+      
+        <div class="dropdown__menu" role="menu" aria-label="Portfolio sections">
+          <a class="dropdown__item" role="menuitem" href="#photography">Photography</a>
+          <a class="dropdown__item" role="menuitem" href="#graphic-design">Graphic Design</a>
+          <a class="dropdown__item" role="menuitem" href="#game-design">Game Design</a>
+        </div>
       </div>
+    </div>
+
       <a class="topbar__email" href="mailto:gabrielle.carmenita@gmail.com">GABRIELLE.CARMENITA@GMAIL.COM</a>
     </header>
 
@@ -48,7 +61,7 @@
     <!-- PORTFOLIO -->
     <section class="section" id="portfolio">
       <div class="bigtitle">PORTFOLIO</div>
-      <div class="subtitle">PHOTOGRAPHY &amp; PHOTO EDITING</div>
+      <div class="subtitle" id="photography">PHOTOGRAPHY &amp; PHOTO EDITING</div>
 
       <div class="portfolio-grid">
         <!-- Left: big image -->
@@ -111,7 +124,7 @@
         </article>
       </div>
 
-     <div class="subtitle subtitle--spaced">GRAPHIC DESIGN</div>
+     <div class="subtitle subtitle--spaced" id="graphic-design">GRAPHIC DESIGN</div>
 
       <div class="gd-grid">
         <figure class="gd-card">
@@ -166,7 +179,7 @@
         </div>
       </div>
 
-      <div class="subtitle subtitle--spaced">GAME DESIGN</div>
+      <div class="subtitle subtitle--spaced" id="game-design">GAME DESIGN</div>
 
       <div class="game-grid">
         <figure class="game-media">
