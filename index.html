@@ -20,7 +20,6 @@
       <div class="topbar__left">
         <a class="navlink navlink--muted" href="#menu">MENU</a>
         <a class="navlink" href="#about">ABOUT</a>
-      
 
       <div class="dropdown">
         <a class="navlink dropdown__toggle" href="#portfolio">
@@ -46,9 +45,9 @@
 
     <!-- INTRODUCTION -->
     <section class="section" id="about">
-      <div class="section__title">INTRODUCTION</div>
+      <div class="section__title">THE INTRODUCTION</div>
       <div class="card">
-        <p><strong>Hello I’m Gaby.</strong></p>
+        <p><strong>.Hello I’m Gaby</strong></p>
         <p>
             Based in Jakarta, I am a hardworking and detail-oriented individual with a strong passion for creativity. I am eager to contribute my skills to a growth-oriented environment where I can continue to learn and take on a new challenge. Many have described me as self driven and always ready to take on a challenge. My design philosophy is rooted in boldness. Designs often becomes muted and forgotten — but in a world overflowing with words, bold design grabs attention and cuts through the noise.
         </p>
@@ -60,8 +59,8 @@
 
     <!-- PORTFOLIO -->
     <section class="section" id="portfolio">
-      <div class="bigtitle">PORTFOLIO</div>
-      <div class="subtitle" id="photography">PHOTOGRAPHY &amp; PHOTO EDITING</div>
+      <div class="bigtitle">THE PORTFOLIO</div>
+      <div class="subtitle" id="photography">.PHOTOGRAPHY &amp; PHOTO EDITING</div>
 
       <div class="portfolio-grid">
         <!-- Left: big image -->
@@ -124,7 +123,7 @@
         </article>
       </div>
 
-     <div class="subtitle subtitle--spaced" id="graphic-design">GRAPHIC DESIGN</div>
+     <div class="subtitle subtitle--spaced" id="graphic-design">.GRAPHIC DESIGN</div>
 
       <div class="gd-grid">
         <figure class="gd-card">
@@ -179,7 +178,7 @@
         </div>
       </div>
 
-      <div class="subtitle subtitle--spaced" id="game-design">GAME DESIGN</div>
+      <div class="subtitle subtitle--spaced" id="game-design">.GAME DESIGN</div>
 
       <div class="game-grid">
         <figure class="game-media">
@@ -194,23 +193,23 @@
       
           <p>
             This project focuses on level design for a first-person shooter prototype developed in Unreal Engine.
-            The level was built through an iterative workflow, starting with a blockout mock-up to test scale,
-            player flow, sightlines, and pacing before moving into a more refined layout.
+            The level was built through an iterative workflow, starting with a blockout mock-up to test scale, player flow, sightlines, and pacing before moving into a more refined layout.
           </p>
       
           <p>
-            Gameplay testing informed multiple revisions to improve navigation clarity, combat encounters,
-            and overall player experience.
+            Gameplay testing informed multiple revisions to improve navigation clarity, combat encounters, and overall player experience.
           </p>
         </article>
       </div>
     </section>
 
     <footer class="footer">
-      <div>© <span id="year"></span> Gabrielle Carmenita</div>
+      <div>© <span id="year"></span> Website created and designed by Gabrielle Carmenita</div>
     </footer>
 
   </div>
+
+  <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -228,6 +227,26 @@
       v.addEventListener("play", lockMute);
       v.addEventListener("volumechange", lockMute);
     }
+
+   // Back to top button
+const toTopBtn = document.getElementById("toTop");
+if (toTopBtn) {
+  const updateToTopVisibility = () => {
+    if (window.scrollY > 300) toTopBtn.classList.add("to-top--show");
+    else toTopBtn.classList.remove("to-top--show");
+  };
+
+  updateToTopVisibility();
+  window.addEventListener("scroll", updateToTopVisibility, { passive: true });
+
+  toTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
   </script>
+
+    
+
 </body>
 </html>
