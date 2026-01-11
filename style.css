@@ -6,6 +6,11 @@
     font-display: swap;
   }
 
+  img, video{
+    max-width: 100%;
+    height: auto;
+  }
+  
 :root{
     --bg: #F5F5F5;
     --paper: #ffffff;
@@ -150,10 +155,24 @@ figure{ margin: 0; }
   
   .hero__img{
     width: 100%;
-    height: 90%;
+    height: 100vh;
+    max-height: 2560px;
+ 
     object-fit: cover;
     display: block;
     filter: saturate(1.05) contrast(1.02);
+
+    position: relative;
+    z-index: 1;
+}
+
+.hero-intro{
+  position: absolute;
+  left: 10px;
+  bottom: 20px;          /* anchor to hero image */
+  z-index: 3;
+
+  max-width: 520px;
 }
 
   .hero::before{
@@ -177,11 +196,11 @@ figure{ margin: 0; }
     font-family: "GenEi Kiwami Gothic",;
     font-weight: 900;
 
-    font-size: 6.8vw;       /* fills screen like poster */
+    font-size: clamp(36px, 6.8vw, 88px);       /* fills screen like poster */
     letter-spacing: -0.02em;
     line-height: 1.2;
 
-    color: #1f1a0f;
+    color: #F6F4EF;
     text-transform: uppercase;
     white-space: nowrap;
 
@@ -199,7 +218,6 @@ figure{ margin: 0; }
 
 /*Intro*/
   #about{
-    margin-top: -280px; /* overlap onto hero */
     position: relative;
     z-index: 3;
 }
@@ -220,6 +238,9 @@ figure{ margin: 0; }
     color: #1f1a0f;
     background: rgba(246, 244, 239, 0.78);
     border-bottom: 0;
+
+    position: relative;
+    z-index: 3;
 }
   
   .card{
@@ -231,6 +252,9 @@ figure{ margin: 0; }
     line-height: 1.65;
 
     color: #1f1a0f;
+
+    position: relative;
+    z-index: 3;
 }
   
   .bigtitle{
@@ -377,6 +401,13 @@ figure{ margin: 0; }
     max-width: 40vw;   /* controlled video size */
     height: auto;
     display: block;
+
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.game-media video:hover{
+  transform: scale(1.015);
 }
 
 .game-text{
@@ -454,12 +485,55 @@ figure{ margin: 0; }
     grid-template-columns: 1fr; 
   }
 
-  .hero__name{ 
-    letter-spacing: -0.025em; font-size: 12vw; 
+  .hero{
+    position: relative;
+  }
+  
+  .hero__name{
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;   /* higher than image */
   }
 
   .hero__img{ 
     height: 240px; 
+  }
+
+  .hero-intro{
+    position: static;
+    margin-top: 12px;
+    max-width: 100%;
+  }
+
+  .card{
+    font-size: 14px;
+  }
+
+  .navlink,
+  .topbar__email{
+    font-size: 14px;
+  }
+
+  .subtitle{
+    font-size: 18px;
+  }
+
+  .shot--text h3,
+  .gd-text h3,
+  .game-text h3{
+    font-size: 14px;
+  }
+
+  .shot--text p,
+  .gd-text p,
+  .game-text p{
+    font-size: 14px;
+  }
+
+  .footer{
+    font-size: 12px;
   }
 
   .topbar{ 
@@ -471,7 +545,7 @@ figure{ margin: 0; }
   }
 
   #about{ 
-    margin-top: -40px; 
+    margin-top: 0px; 
   }
 
   .section__title{ 
@@ -479,6 +553,7 @@ figure{ margin: 0; }
   }
   .game-grid{ 
     grid-template-columns: 1fr; 
+    padding: 10px 0 10px;
   }
     .dropdown::after {
       display: none;
