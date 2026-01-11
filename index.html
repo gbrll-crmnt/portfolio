@@ -41,21 +41,20 @@
     <section class="hero" id="menu" aria-label="Hero">
       <div class="hero__name">GABRIELLE CARMENITA</div>
       <img class="hero__img" src="assets/me.JPG" alt="Portrait / hero image" />
-    </section>
-
-    <!-- INTRODUCTION -->
-    <section class="section" id="about">
-      <div class="section__title">THE INTRODUCTION</div>
-      <div class="card">
-        <p><strong>.Hello I’m Gaby</strong></p>
-        <p>
-            Based in Jakarta, I am a hardworking and detail-oriented individual with a strong passion for creativity. I am eager to contribute my skills to a growth-oriented environment where I can continue to learn and take on a new challenge. Many have described me as self driven and always ready to take on a challenge. My design philosophy is rooted in boldness. Designs often becomes muted and forgotten — but in a world overflowing with words, bold design grabs attention and cuts through the noise.
-        </p>
-        <p>
-          In my spare time, I enjoy taking pictures with my digi-cam and exploring new cuisines.
-        </p>
+      <div class="hero-intro">
+        <div class="section__title">THE INTRODUCTION</div>
+        <div class="card">
+          <p><strong>.Hello I’m Gaby</strong></p>
+          <p>
+              Based in Jakarta, I am a hardworking and detail-oriented individual with a strong passion for creativity. I am eager to contribute my skills to a growth-oriented environment where I can continue to learn and take on a new challenge. Many have described me as self driven and always ready to take on a challenge. My design philosophy is rooted in boldness. Designs often becomes muted and forgotten — but in a world overflowing with words, bold design grabs attention and cuts through the noise.
+          </p>
+          <p>
+            In my spare time, I enjoy taking pictures with my digi-cam and exploring new cuisines.
+          </p>
+        </div>
       </div>
     </section>
+    
 
     <!-- PORTFOLIO -->
     <section class="section" id="portfolio">
@@ -167,7 +166,7 @@
           </p>
 
           <p class="muted">
-            Disclaimer: This is an unofficial and non-commercial concept.
+            Disclaimer - This is an unofficial and non-commercial concept. I am not affiliated with Asics or the creator of Haikyuu!! (Haruichi Furudate).
           </p>
         </article>
 
@@ -177,12 +176,12 @@
         </figure>
         </div>
       </div>
-
+<!--GAME DESIGN-->
       <div class="subtitle subtitle--spaced" id="game-design">.GAME DESIGN</div>
-
+      <div class="game-project">
       <div class="game-grid">
         <figure class="game-media">
-          <video id="levelVideo" playsinline muted defaultMuted autoplay loop>
+          <video class="hover-video" id="levelVideo" playsinline muted defaultMuted autoplay loop>
             <source src="assets/level-design-demo.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -200,53 +199,89 @@
             Gameplay testing informed multiple revisions to improve navigation clarity, combat encounters, and overall player experience.
           </p>
         </article>
-      </div>
+        </div>
+        </div>
+
+        <div class="game-project game project--spaced">
+        <div class="game-grid">
+        <figure class="game-media">
+            <video class="hover-video" id="coralsVideo" playsinline muted defaultMuted autoplay loop>
+                <source src="assets/game design assets/CoralsGameplay_Video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+        </figure>
+
+        <article class="game-text">
+            <h3>Corals - A Hidden Object Game</h3>
+
+            <p>
+                Corals is a casual hidden-object game which was created to spread awareness on global warming and inspiring players to preserve the ocean.
+            </p>
+
+            <p>
+                All visual assets were designed using Adobe Suite and optimized for integration into Unity, where gameplay logic, object interactions, and level assembly were implemented. 
+            </p> 
+
+            <p>
+                The game was iterated through testing to improve clarity, pacing, and overall player engagement.
+            </p> 
+        </article>
+        </div>
+        </div>
+      
     </section>
 
     <footer class="footer">
-      <div>© <span id="year"></span> Website created and designed by Gabrielle Carmenita</div>
+      <div>© <span id="year"></span> Website created and designed by Gabrielle Carmenita | Under Construction! </div>
     </footer>
 
   </div>
 
   <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
 
+  <!--JavaScript-->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Force the level video to stay muted (some browsers/players can restore audio state)
-    const v = document.getElementById("levelVideo");
-    if (v) {
-      const lockMute = () => {
-        v.muted = true;
-        v.defaultMuted = true;
-        v.volume = 0;
+    const hoverVideos = document.querySelectorAll("video.hover-video");
+
+    hoverVideos.forEach((vid) => {
+      const hardMute = () => {
+        vid.muted = true;
+        vid.defaultMuted = true;
+        vid.volume = 0;
       };
 
-      lockMute();
-      v.addEventListener("play", lockMute);
-      v.addEventListener("volumechange", lockMute);
+    hardMute();
+
+    // Autoplay safety net
+  vid.addEventListener("play", hardMute);
+  vid.addEventListener("volumechange", hardMute);
+
+  // Optional: subtle interaction on hover (NO pause)
+  vid.addEventListener("mouseenter", () => {
+    hardMute();
+    vid.play(); // resumes if browser paused it
+  });
+});
+
+    // Back to top button
+    const toTopBtn = document.getElementById("toTop");
+    if (toTopBtn) {
+    const updateToTopVisibility = () => {
+        if (window.scrollY > 300) toTopBtn.classList.add("to-top--show");
+        else toTopBtn.classList.remove("to-top--show");
+    };
+
+    updateToTopVisibility();
+    window.addEventListener("scroll", updateToTopVisibility, { passive: true });
+
+    toTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
     }
 
-   // Back to top button
-const toTopBtn = document.getElementById("toTop");
-if (toTopBtn) {
-  const updateToTopVisibility = () => {
-    if (window.scrollY > 300) toTopBtn.classList.add("to-top--show");
-    else toTopBtn.classList.remove("to-top--show");
-  };
-
-  updateToTopVisibility();
-  window.addEventListener("scroll", updateToTopVisibility, { passive: true });
-
-  toTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
   </script>
-
-    
 
 </body>
 </html>
