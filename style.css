@@ -189,7 +189,7 @@ max-width: 520px;
 .hero__name{
   position: absolute;
   text-align: left;
-  top: 70px;               /* sits inside the band */
+  top: 250px;               /* sits inside the band */
   left: 10px;
   z-index: 2;
 
@@ -401,6 +401,11 @@ max-width: 520px;
   justify-self: start;
 }
 
+.game-media img{
+  max-width: 40vw;
+  padding-top: 10px;
+}
+
 .game-media video{
   width: 100%;
   max-width: 40vw;   /* controlled video size */
@@ -496,11 +501,13 @@ background: rgba(31, 26, 15, 0.06);
 
 .hero__name{
   position: absolute;
-  top: 12px;
+  top: 150px;
   left: 10px;
   transform: none;
   text-align: left;
   z-index: 5;   /* higher than image */
+
+  color: #1f1a0f;
 }
 
 .hero__img{ 
@@ -527,7 +534,8 @@ background: rgba(31, 26, 15, 0.06);
   margin-top: -32px;
 }
 
-.subtitle{
+.subtitle,
+.bigtitle{
   font-size: 18px;
 }
 
