@@ -188,7 +188,7 @@ figure{ margin: 0; }
   
   .hero__name{
     position: absolute;
-    left: 50%;
+   text-align: left;
     top: 20px;               /* sits inside the band */
     transform: translateX(-50%);
     z-index: 2;
@@ -202,7 +202,7 @@ figure{ margin: 0; }
 
     color: #F6F4EF;
     text-transform: uppercase;
-    white-space: nowrap;
+    white-space: normal;
 
     font-kerning: normal;
     font-feature-settings: "kern";
