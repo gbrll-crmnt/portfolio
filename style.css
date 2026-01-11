@@ -1,123 +1,581 @@
 @font-face {
-    font-family: "GenEi Kiwami Gothic";
-    src: url("fonts/GenEiKiwamiGothic-Ultra.ttf") format("truetype");
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-  }
+  font-family: "GenEi Kiwami Gothic";
+  src: url("fonts/GenEiKiwamiGothic-Ultra.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
-  img, video{
-    max-width: 100%;
-    height: auto;
-  }
-  
+img, video{
+  max-width: 100%;
+  height: auto;
+}
+
 :root{
-    --bg: #F5F5F5;
-    --paper: #ffffff;
-    --ink: #1f1a0f;
-    --muted: #555;
-    --line: #d8d2c6;
-    --max: 1200px;
-  }
-  
-  *{ box-sizing: border-box; }
-  html, body { height: 100%; }
-  body{
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  }
+  --bg: #F5F5F5;
+  --paper: #ffffff;
+  --ink: #1f1a0f;
+  --muted: #555;
+  --line: #d8d2c6;
+  --max: 1200px;
+}
+
+*{ box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
 
 figure{ margin: 0; }
-  
-  .page{
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 18px 10px 60px; /* 10px page margin like your reference */
-  }
+
+.page{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 18px 10px 60px; /* 10px page margin like your reference */
+}
 
 /* Top Nav */
-  .topbar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 2px;
-    border-bottom: 2px;
-    padding: 10px 4px 20px;
-    gap: 12px;
-  }
-  
-  .topbar__left{
-    display: flex;
-    gap: 40px;
-    align-items: center;
+.topbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px;
+  border-bottom: 2px;
+  padding: 10px 4px 20px;
+  gap: 12px;
+}
 
-    padding-left: 10px ;
-  }
-  
-  .navlink {
-    font-weight: 700;
-    font-size: 1vw;
-    letter-spacing: .02em;
-    color: var(--ink);
-    text-decoration: none;
-    background: transparent;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-  } 
+.topbar__left{
+  display: flex;
+  gap: 40px;
+  align-items: center;
 
-  .navlink--muted{
-    opacity: .85;
-  }
+  padding-left: 10px ;
+}
 
-  .topbar__email {
-    font-weight: 700;
-    font-size: 1vw;
-    color: var(--ink);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-  }
+.navlink {
+  font-weight: 700;
+  font-size: 1vw;
+  letter-spacing: .02em;
+  color: var(--ink);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+} 
 
-  /* Portfolio Dropdown */
+.navlink--muted{
+  opacity: .85;
+}
+
+.topbar__email {
+  font-weight: 700;
+  font-size: 1vw;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+/* Portfolio Dropdown */
 .dropdown::after{
+content: "";
+position: absolute;
+left: 0;
+right: 0;
+top: 100%;
+height: 12px;
+}
+
+.dropdown{
+position: relative;
+display: inline-flex;
+align-items: center;
+}
+
+.dropdown__toggle{
+display: inline-flex;
+align-items: center;
+gap: 6px;
+}
+
+.dropdown__caret{
+font-size: 0.9em;
+line-height: 1;
+}
+
+.dropdown__menu{
+position: absolute;
+top: 100%;
+left: 0;
+min-width: 220px;
+
+background: rgba(246, 244, 239, 0.98);
+
+margin-top: 10px;
+display: none;
+z-index: 60;
+}
+
+.dropdown:hover .dropdown__menu,
+.dropdown:focus-within .dropdown__menu{
+display: block;
+}
+
+.dropdown__item{
+display: block;
+padding: 10px 14px;
+text-decoration: none;
+color: var(--ink);
+
+font-weight: 700;
+letter-spacing: .02em;
+font-size: 14px;
+white-space: nowrap;
+}
+
+.dropdown__item:hover,
+.dropdown__item:focus{
+background: rgba(31, 26, 15, 0.06);
+outline: none;
+}
+
+/* Hero */
+
+.hero{
+  margin-top: 10px;
+
+  position: relative;
+  
+  background: #eee;
+}
+
+.hero__img{
+  width: 100%;
+  height: 100vh;
+  max-height: 2560px;
+
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.05) contrast(1.02);
+
+  position: relative;
+  z-index: 1;
+}
+
+.hero-intro{
+position: absolute;
+left: 10px;
+bottom: 20px;          /* anchor to hero image */
+z-index: 3;
+
+max-width: 520px;
+}
+
+.hero::before{
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  top: 100%;
-  height: 12px;
+  top: 0;
+  height: 150px; /* band height */
+  background: rgba(246, 244, 239, 0.78); /* matches page tone */
+  z-index: 1;
 }
 
-.dropdown{
-  position: relative;
-  display: inline-flex;
-  align-items: center;
+.hero__name{
+  position: absolute;
+  text-align: left;
+  top: 70px;               /* sits inside the band */
+  left: 10px;
+  z-index: 2;
+
+  font-family: "GenEi Kiwami Gothic",;
+  font-weight: 900;
+
+  font-size: clamp(36px, 6.5vw, 88px);       /* fills screen like poster */
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+
+  color: #1f1a0f;
+  text-transform: uppercase;
+  white-space: normal;
+
+  font-kerning: normal;
+  font-feature-settings: "kern";
+
+  -webkit-text-stroke: 0.8px currentColor;
+
+  text-rendering: geometricPrecision;
 }
 
-.dropdown__toggle{
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.dropdown__caret{
-  font-size: 0.9em;
+.hero__first,.hero__last{
+  display: block;
   line-height: 1;
 }
 
-.dropdown__menu{
+.section{
+  padding: 5px 0 0;
+}
+
+/*Intro*/
+#about{
+  position: relative;
+  z-index: 3;
+}
+
+#portfolio{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.section__title{
+  font-family: "GenEi Kiwami Gothic",;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-size: 3.4vw;
+
+  padding: 10px 10px 0px;
+
+  color: #1f1a0f;
+  background: rgba(246, 244, 239, 0.78);
+  border-bottom: 0;
+
+  position: relative;
+  z-index: 3;
+}
+
+.card{
+  background: rgba(246, 244, 239, 0.78);
+  border: 0;
+  padding: 10px 10px 5px;
+
+  font-size: 1vw;
+  line-height: 1.65;
+
+  color: #1f1a0f;
+
+  position: relative;
+  z-index: 3;
+}
+
+.bigtitle{
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-size: 3.4vw;
+
+  padding: 5px 0 0;
+  
+  
+  text-transform: uppercase;
+}
+
+.subtitle{
+  margin-top: 5px;
+
+  font-weight: 800;
+  letter-spacing: .04em;
+  font-size: 1.6vw;
+
+  opacity: .9;
+  padding-left: 0;
+}
+
+.subtitle--spaced{
+  margin-top: 100px;
+}
+
+#portfolio img{
+  margin: 0;          /* no extra offset */
+  display: block;
+}
+
+.portfolio-grid{
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1.5fr .9fr;
+  column-gap: 20px;   /* wider gutter like the reference */
+  row-gap: 100px;
+  justify-items: start;
+}
+
+.shot{
+  background: transparent;
+  margin: 0;
+}
+
+.shot--big img{
+  width: 75%;
+  height: auto;
+  display: block;
+  margin: 0;            /* IMPORTANT */
+}
+
+.shot--text{
+  padding: 0 10px 0 0;    /* keep right breathing room, no left offset */
+}
+
+.shot--text h3{
+  margin: 0 0 25px;
+  font-size: 1vw;
+  font-weight: 900;
+  letter-spacing: .03em;
+}
+
+.shot--text p{
+  margin: 0 0 25px;
+  font-size: 1vw;
+  line-height: 1.65;
+}
+
+.muted{ 
+  color: var(--muted); 
+}
+
+.compare{
+  margin: 14px 0 0;       /* align with text column left edge */
+  width: min(360px, 78%);
+}
+
+.compare img{
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;              /* remove any residual offsets */
+}
+
+/* Graphic Design*/
+
+.gd-grid{
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr;
+  column-gap: 80px;   /* wider gutter like the reference */
+  row-gap: 100px;
+  justify-items: start;
+}
+
+.gd-item{
+  display: block;
+}
+.gd-card{
+  background: transparent;
+  margin: 0;
+}
+
+.gd-card img{
+  width: 85%;
+  height: auto;
+  display: block;     /* posters fill the left/right columns */
+}
+
+.gd-text{
+  padding: 0 0 25px;
+}
+.gd-text h3{
+  margin: 0 0 25px;
+  font-size: 1vw;
+  font-weight: 900;
+  letter-spacing: .03em;
+}
+.gd-text p{
+  margin: 0 0 25px;
+  font-size: 1vw;
+  line-height: 1.65;
+}
+
+/*Game Media*/
+
+.game-grid{
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: auto 1fr; /* video left, text right */
+  column-gap: 25px;
+  align-items: start;
+}
+
+.game-media{
+  justify-self: start;
+}
+
+.game-media video{
+  width: 100%;
+  max-width: 40vw;   /* controlled video size */
+  height: auto;
+  display: block;
+
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.game-media video:hover{
+transform: scale(1.015);
+}
+
+.game-text{
+padding: 0 0 25px;
+}
+
+.game-text h3{
+margin: 0 0 25px;
+color: #1f1a0f;
+font-size: 1vw;
+line-height: 1.65;
+}
+
+.game-text p{
+margin: 0 0 25px;
+font-size: 1vw;
+line-height: 1.65;
+}
+
+.footer{
+margin-top: 28px;
+border-top: 2px solid var(--line);
+padding-top: 12px;
+font-size: 0.9vw;
+color: var(--muted);
+}
+
+/* Back to Top Button */
+.to-top{
+position: fixed;
+right: 20px;
+bottom: 20px;
+
+width: 42px;
+height: 42px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+background: rgba(246, 244, 239, 0.95);
+color: 1f1a0f;
+
+border: 1px solid var(--line);
+border-radius: 50%;
+
+font-size: 18px;
+font-weight: 900;
+
+cursor: pointer;
+
+opacity: 0;
+pointer-events: none;
+transform: translateY(10px);
+transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* visible state */
+.to-top--show{
+opacity: 1;
+pointer-events: auto;
+}
+
+.to-top:hover{
+background: rgba(31, 26, 15, 0.06);
+}
+
+/* Responsive */
+@media (max-width: 860px){
+.portfolio-grid{ 
+  grid-template-columns: 1fr; 
+}
+
+.gd-grid{ 
+  grid-template-columns: 1fr; 
+}
+
+.hero{
+  position: relative;
+}
+
+.hero__name{
   position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 220px;
+  top: 12px;
+  left: 10px;
+  transform: none;
+  text-align: left;
+  z-index: 5;   /* higher than image */
+}
 
-  background: rgba(246, 244, 239, 0.98);
+.hero__img{ 
+  height: 240px; 
+}
 
-  margin-top: 10px;
+.hero-intro{
+  position: static;
+  margin-top: 12px;
+  max-width: 100%;
+}
+
+.card{
+  font-size: 14px;
+}
+
+.navlink,
+.topbar__email{
+  font-size: 14px;
+}
+
+.topbar__email{
+  align-self: flex-end;
+  margin-top: -32px;
+}
+
+.subtitle{
+  font-size: 18px;
+}
+
+.shot--text h3,
+.gd-text h3,
+.game-text h3{
+  font-size: 14px;
+}
+
+.shot--text p,
+.gd-text p,
+.game-text p{
+  font-size: 14px;
+}
+
+.footer{
+  font-size: 12px;
+}
+
+.topbar{ 
+  flex-direction: column; align-items: flex-start; 
+}
+
+.topbar__email{ 
+  white-space: normal; 
+}
+
+#about{ 
+  margin-top: 0px; 
+}
+
+.section__title{ 
+  font-size: 3.4vw; 
+}
+.game-grid{ 
+  grid-template-columns: 1fr; 
+  padding: 10px 0 10px;
+}
+  .dropdown::after {
+    display: none;
+  }
+
+.dropdown__menu{
+  position: static;
   display: none;
-  z-index: 60;
+  border: 0;
+  padding: 0;
+  background: transparent;
 }
 
 .dropdown:hover .dropdown__menu,
@@ -126,455 +584,8 @@ figure{ margin: 0; }
 }
 
 .dropdown__item{
-  display: block;
-  padding: 10px 14px;
-  text-decoration: none;
-  color: var(--ink);
-
-  font-weight: 700;
-  letter-spacing: .02em;
+  padding: 10px 0;
   font-size: 14px;
-  white-space: nowrap;
 }
-
-.dropdown__item:hover,
-.dropdown__item:focus{
-  background: rgba(31, 26, 15, 0.06);
-  outline: none;
-}
-
-/* Hero */
-
-  .hero{
-    margin-top: 10px;
-
-    position: relative;
-    
-    background: #eee;
-}
-  
-  .hero__img{
-    width: 100%;
-    height: 100vh;
-    max-height: 2560px;
- 
-    object-fit: cover;
-    display: block;
-    filter: saturate(1.05) contrast(1.02);
-
-    position: relative;
-    z-index: 1;
-}
-
-.hero-intro{
-  position: absolute;
-  left: 10px;
-  bottom: 20px;          /* anchor to hero image */
-  z-index: 3;
-
-  max-width: 520px;
-}
-
-  .hero::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 150px; /* band height */
-    background: rgba(246, 244, 239, 0.78); /* matches page tone */
-    z-index: 1;
-}
-  
-  .hero__name{
-    position: absolute;
-   text-align: left;
-    top: 20px;               /* sits inside the band */
-    transform: translateX(-50%);
-    z-index: 2;
-
-    font-family: "GenEi Kiwami Gothic",;
-    font-weight: 900;
-
-    font-size: clamp(36px, 6.8vw, 88px);       /* fills screen like poster */
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-
-    color: #F6F4EF;
-    text-transform: uppercase;
-    white-space: normal;
-
-    font-kerning: normal;
-    font-feature-settings: "kern";
-
-    -webkit-text-stroke: 0.8px currentColor;
-
-    text-rendering: geometricPrecision;
-}
-
-  .section{
-    padding: 5px 0 0;
-}
-
-/*Intro*/
-  #about{
-    position: relative;
-    z-index: 3;
-}
-
-  #portfolio{
-    padding-left: 10px;
-    padding-right: 10px;
-}
-  
-  .section__title{
-    font-family: "GenEi Kiwami Gothic",;
-    font-weight: 900;
-    letter-spacing: -0.04em;
-    font-size: 3.4vw;
-
-    padding: 10px 10px 0px;
-
-    color: #1f1a0f;
-    background: rgba(246, 244, 239, 0.78);
-    border-bottom: 0;
-
-    position: relative;
-    z-index: 3;
-}
-  
-  .card{
-    background: rgba(246, 244, 239, 0.78);
-    border: 0;
-    padding: 10px 10px 5px;
-
-    font-size: 1vw;
-    line-height: 1.65;
-
-    color: #1f1a0f;
-
-    position: relative;
-    z-index: 3;
-}
-  
-  .bigtitle{
-    font-weight: 900;
-    letter-spacing: -0.04em;
-    font-size: 3.4vw;
-
-    padding: 5px 0 0;
-    
-    
-    text-transform: uppercase;
-}
-  
-  .subtitle{
-    margin-top: 5px;
-
-    font-weight: 800;
-    letter-spacing: .04em;
-    font-size: 1.6vw;
-
-    opacity: .9;
-    padding-left: 0;
-}
-  
-  .subtitle--spaced{
-    margin-top: 100px;
-}
-
-  #portfolio img{
-    margin: 0;          /* no extra offset */
-    display: block;
-}
-  
-  .portfolio-grid{
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: 1.5fr .9fr;
-    column-gap: 20px;   /* wider gutter like the reference */
-    row-gap: 100px;
-    justify-items: start;
-}
-  
-  .shot{
-    background: transparent;
-    margin: 0;
-}
-  
-  .shot--big img{
-    width: 75%;
-    height: auto;
-    display: block;
-    margin: 0;            /* IMPORTANT */
-}
-  
-  .shot--text{
-    padding: 0 10px 0 0;    /* keep right breathing room, no left offset */
-}
-  
-  .shot--text h3{
-    margin: 0 0 25px;
-    font-size: 1vw;
-    font-weight: 900;
-    letter-spacing: .03em;
-}
-  
-  .shot--text p{
-    margin: 0 0 25px;
-    font-size: 1vw;
-    line-height: 1.65;
-}
-  
-  .muted{ 
-    color: var(--muted); 
-}
-  
-  .compare{
-    margin: 14px 0 0;       /* align with text column left edge */
-    width: min(360px, 78%);
-}
-
-  .compare img{
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0;              /* remove any residual offsets */
-}
-
-/* Graphic Design*/
-
-  .gd-grid{
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: 1.1fr 1.1fr;
-    column-gap: 80px;   /* wider gutter like the reference */
-    row-gap: 100px;
-    justify-items: start;
-}
-  
-  .gd-item{
-    display: block;
-}
-  .gd-card{
-    background: transparent;
-    margin: 0;
-}
-
-  .gd-card img{
-    width: 85%;
-    height: auto;
-    display: block;     /* posters fill the left/right columns */
-}
-  
-  .gd-text{
-    padding: 0 0 25px;
-}
-  .gd-text h3{
-    margin: 0 0 25px;
-    font-size: 1vw;
-    font-weight: 900;
-    letter-spacing: .03em;
-}
-  .gd-text p{
-    margin: 0 0 25px;
-    font-size: 1vw;
-    line-height: 1.65;
-}
-
-/*Game Media*/
-
-.game-grid{
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: auto 1fr; /* video left, text right */
-    column-gap: 25px;
-    align-items: start;
-}
-
-.game-media{
-    justify-self: start;
-}
-
-.game-media video{
-    width: 100%;
-    max-width: 40vw;   /* controlled video size */
-    height: auto;
-    display: block;
-
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.game-media video:hover{
-  transform: scale(1.015);
-}
-
-.game-text{
-  padding: 0 0 25px;
-}
-
-.game-text h3{
-  margin: 0 0 25px;
-  color: #1f1a0f;
-  font-size: 1vw;
-  line-height: 1.65;
-}
-
-.game-text p{
-  margin: 0 0 25px;
-  font-size: 1vw;
-  line-height: 1.65;
-}
-
-.footer{
-  margin-top: 28px;
-  border-top: 2px solid var(--line);
-  padding-top: 12px;
-  font-size: 0.9vw;
-  color: var(--muted);
-}
-
-/* Back to Top Button */
-.to-top{
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(246, 244, 239, 0.95);
-  color: 1f1a0f;
-
-  border: 1px solid var(--line);
-  border-radius: 50%;
-
-  font-size: 18px;
-  font-weight: 900;
-
-  cursor: pointer;
-
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* visible state */
-.to-top--show{
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.to-top:hover{
-  background: rgba(31, 26, 15, 0.06);
-}
-  
-/* Responsive */
-@media (max-width: 860px){
-  .portfolio-grid{ 
-    grid-template-columns: 1fr; 
-  }
-
-  .gd-grid{ 
-    grid-template-columns: 1fr; 
-  }
-
-  .hero{
-    position: relative;
-  }
-  
-  .hero__name{
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;   /* higher than image */
-  }
-
-  .hero__img{ 
-    height: 240px; 
-  }
-
-  .hero-intro{
-    position: static;
-    margin-top: 12px;
-    max-width: 100%;
-  }
-
-  .card{
-    font-size: 14px;
-  }
-
-  .navlink,
-  .topbar__email{
-    font-size: 14px;
-  }
-
-  .subtitle{
-    font-size: 18px;
-  }
-
-  .shot--text h3,
-  .gd-text h3,
-  .game-text h3{
-    font-size: 14px;
-  }
-
-  .shot--text p,
-  .gd-text p,
-  .game-text p{
-    font-size: 14px;
-  }
-
-  .footer{
-    font-size: 12px;
-  }
-
-  .topbar{ 
-    flex-direction: column; align-items: flex-start; 
-  }
-
-  .topbar__email{ 
-    white-space: normal; 
-  }
-
-  #about{ 
-    margin-top: 0px; 
-  }
-
-  .section__title{ 
-    font-size: 3.4vw; 
-  }
-  .game-grid{ 
-    grid-template-columns: 1fr; 
-    padding: 10px 0 10px;
-  }
-    .dropdown::after {
-      display: none;
-    }
-
-  .dropdown__menu{
-    position: static;
-    display: none;
-    border: 0;
-    padding: 0;
-    background: transparent;
-  }
-  
-  .dropdown:hover .dropdown__menu,
-  .dropdown:focus-within .dropdown__menu{
-    display: block;
-  }
-  
-  .dropdown__item{
-    padding: 10px 0;
-    font-size: 14px;
-  }
 }
 
